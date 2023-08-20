@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+</head>
+
+<body>
+    <style>
+        .forms {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* padding: 20px; */
+        }
+
+        .file {
+            font-size: larger;
+            margin: 30px;
+        }
+
+        .submit {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: large;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+
+    <h2>Add Candidates to database </h6>
+        <div>
+            <form action="/upload" method="post" class="forms" enctype="multipart/form-data">
+                <input class="file" type="file" name="excelFile" id="">
+                <input class="submit" type="submit" value="submit" name="submit">
+            </form>
+            <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="excelFile" class="file-input">
+                <i class="fa-solid fa-upload"></i>
+                <button type="submit">Upload</button>
+            </form> -->
+
+        </div>
+
+</body>
+
+</html>
