@@ -25,7 +25,7 @@ const connectdb = async () => {
 // Configure multer for file upload
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, 'uploads/'); //our file after submitting will be stored in uploads folder
     },
     filename: (req, file, cb) => {
         const fileName = file.fieldname + path.extname(file.originalname);

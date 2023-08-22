@@ -1,6 +1,6 @@
 const details = require('../modals/details');
 // const main = require('../utils/extractData');
-// const path = require('path');
+const path = require('path');
 const exceljs = require('exceljs');
 
 
@@ -14,21 +14,11 @@ const insertData = async (req, res) => {
     try {
         async function main() {
             const workbook = new exceljs.Workbook();
-            await workbook.xlsx.readFile('/home/subham/Videos/assignment-reunion/backend/uploads/excelFile.xlsx');
-            const worksheet = workbook.getWorksheet(1);
+            await workbook.xlsx.readFile('/home/subham/Videos/multer-nodejs/mutler-nodejs/uploads/excelFile.xlsx');//define the path where the file is stored
+            const eachSeries = workbook.getWorksheet(1);
 
-            // const extractedData = [];
             let rowNumber = 1;
-
-            const columns = worksheet.getRow(1);
-            //extarct the name of column
-            const columnNames = [];
-            columns.eachCell(cell => {
-                columnNames.push(cell.value);
-            });
-            // console.log("column names", columnNames);
-            //extracting the name of the column
-            worksheet.eachRow({ includeEmpty: false }, async (row) => {
+            eachSeries.eachRow({ includeEmpty: false }, async (row) => { //eachSeries of each row is added
                 if (rowNumber === 1) {
                     rowNumber++;
                     return;
@@ -39,7 +29,7 @@ const insertData = async (req, res) => {
                     return;
                 }
 
-                const newData = await new details({
+                const newData = new details({
                     name: row.getCell(1).value,
                     email: row.getCell(2).value,
                     phone: row.getCell(3).value,
@@ -66,7 +56,7 @@ const insertData = async (req, res) => {
             });
         }
         await main();
-        res.send("Data inserted successfully");
+        res.sendFile(path.join(__dirname, '..' + '/end.html'));
     } catch (err) {
         console.log(err);
         res.send(err);
