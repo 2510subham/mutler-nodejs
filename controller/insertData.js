@@ -14,7 +14,7 @@ const insertData = async (req, res) => {
     try {
         async function main() {
             const workbook = new exceljs.Workbook();
-            await workbook.xlsx.readFile('/home/subham/Videos/multer-nodejs/mutler-nodejs/uploads/excelFile.xlsx');//define the path where the file is stored
+            await workbook.xlsx.readFile('../uploads/excelFile.xlsx');//define the path where the file is stored
             const eachSeries = workbook.getWorksheet(1);
 
             let rowNumber = 1;
